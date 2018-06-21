@@ -1,13 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HomePage } from '../home/home';
+import { GooglePlus } from '@ionic-native/google-plus';
 
-/**
- * Generated class for the LoginPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -16,7 +11,10 @@ import { HomePage } from '../home/home';
 })
 export class LoginPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  isUserLoggedIn: any = false;
+  userInfo: any = {};
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public gp: GooglePlus) {
   }
 
   ionViewDidLoad() {
@@ -24,7 +22,7 @@ export class LoginPage {
   }
 
   login(){
-    this.navCtrl.push(HomePage)
+    this.navCtrl.setRoot(HomePage);
 
   }
 
@@ -34,6 +32,20 @@ export class LoginPage {
 
   signUp(){
 
+  }
+
+  loginWithGP(){
+    this.gp.login({}).then(res => {
+      console.log(res);
+      this.userInfo = res;
+      this.isUserLoggedIn = true;
+    }).catch( err => console.log(err));
+  }
+
+  logout(){
+    this.gp.logout().then( ()=> {
+      this.isUserLoggedIn = false;
+    })
   }
 
 }

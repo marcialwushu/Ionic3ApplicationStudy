@@ -6,6 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { GooglePlus } from '@ionic-native/google-plus';
 
 import { NgCalendarModule } from 'ionic2-calendar';
 
@@ -27,6 +28,7 @@ import { NgCalendarModule } from 'ionic2-calendar';
   providers: [
     StatusBar,
     SplashScreen,
+    GooglePlus,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

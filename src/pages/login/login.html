@@ -38,4 +38,8 @@
 
   <div text-center style="text-decoration: underline;margin-top:20px;color:white;font-size: 14px;"  (click)="forgotPwd()">Forgot Password</div>
   <button ion-button style="background-color: transparent;color:white;border-color:white;border:1px solid white;margin-top:20px;height: 35px;font-size: 14px;"  block  (click)="signUp()">Register</button>
+
+  <div *ngIf="!isUserLoggedIn">
+    <button ion-button block (click)="loginWithGP()">Login with Google+</button>
+  </div>
 </ion-content>
