@@ -9,6 +9,7 @@ import { HomePage } from '../pages/home/home';
 import { GooglePlus } from '@ionic-native/google-plus';
 
 import { NgCalendarModule } from 'ionic2-calendar';
+import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { NgCalendarModule } from 'ionic2-calendar';
     StatusBar,
     SplashScreen,
     GooglePlus,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    AuthServiceProvider
   ]
 })
 export class AppModule {}
