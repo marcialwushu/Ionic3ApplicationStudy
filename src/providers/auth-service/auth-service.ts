@@ -1,17 +1,36 @@
-import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
+import 'rxjs/add/operator/map';
 
-/*
-  Generated class for the AuthServiceProvider provider.
+export class User {
+  name: string;
+  email: string;
 
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
+  constructor(name: string, email: string) {
+    this.name = name;
+    this.email = email;
+  }
+}
+
 @Injectable()
 export class AuthServiceProvider {
+  currentUser: User;
 
-  constructor(public http: HttpClient) {
-    console.log('Hello AuthServiceProvider Provider');
+  public login(credentials) {
+
   }
+
+  public register(credentials) {
+
+  }
+
+  public getUserInfo() : User {
+    return this.currentUser;
+  }
+
+  public logout(){
+
+  }
+
 
 }
