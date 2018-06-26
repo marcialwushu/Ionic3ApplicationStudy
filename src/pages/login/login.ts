@@ -1,4 +1,4 @@
-import { Component, ErrorHandler } from '@angular/core';
+import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, Loading, AlertController, LoadingController } from 'ionic-angular';
 import { GooglePlus } from '@ionic-native/google-plus';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
@@ -62,11 +62,11 @@ export class LoginPage {
       subTitle: text,
       buttons: ['OK']
     });
-    alert.present(prompt);
+    alert.present();
   }
 
 
-  /**
+
   Login(){
     this.navCtrl.setRoot('HomePage');
 
@@ -80,7 +80,7 @@ export class LoginPage {
 
   }
 
-  **/
+
 
   loginWithGP(){
     this.gp.login({}).then(res => {
