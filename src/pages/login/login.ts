@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, Loading, AlertController, LoadingController } from 'ionic-angular';
 import { GooglePlus } from '@ionic-native/google-plus';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
+import { HomePage } from '../home/home';
 
 
 
@@ -33,9 +34,9 @@ export class LoginPage {
 
   public login() {
     this.showLoading()
-    this.auth.login(this.registerCredentials).subscriber(allowed => {
+    this.auth.login(this.registerCredentials).subscribe(allowed => {
       if(allowed) {
-        this.navCtrl.setRoot('HomePage');
+        this.navCtrl.setRoot(HomePage);
       } else {
         this.showError("Acess Denied");
       }
