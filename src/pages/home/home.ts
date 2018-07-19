@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, ModalController, AlertController } from 'ionic-angular';
 import * as moment from 'moment';
+import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
+
 
 @Component({
   selector: 'page-home',
@@ -10,13 +12,27 @@ export class HomePage {
   eventSource = [];
   viewTitle: string;
   selectedDay = new Date();
+  username = '';
+  email = '';
 
   calendar = {
     mode: 'month',
     currentDate: new Date()
   };
 
-  constructor(public navCtrl: NavController, private modalCtrl: ModalController, private alertCtrl: AlertController) { }
+  constructor(public navCtrl: NavController, private modalCtrl: ModalController, private alertCtrl: AlertController, private auth: AuthServiceProvider) {
+    let info = this.auth.getUserInfo();
+    this.username = info['name'];
+    this.email = info['email'];
+
+  }
+
+  public logout() {
+    this.auth.logout().subscribe(succ => {
+      this.navCtrl.setRoot('LoginPage')
+    })
+  }
+
 
   addEvent() {
     let modal = this.modalCtrl.create('EventModalPage', {selectedDay: this.selectedDay});
@@ -57,4 +73,6 @@ export class HomePage {
   onTimeSelected(ev) {
     this.selectedDay = ev.selectedTime;
   }
+
+
 }
